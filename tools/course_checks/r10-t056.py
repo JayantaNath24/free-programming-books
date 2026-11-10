@@ -37,6 +37,8 @@ def parse(text):
 def url_problem(url):
     if not url:
         return "empty url"
+    if url.startswith("#"):
+        return None  # in-page anchor, valid
     if re.search(r"[\s<>\"]", url):
         return "illegal character (space, <, > or quote)"
     if BAD_PCT.search(url):
@@ -82,6 +84,12 @@ FIXTURES = {
         "* [NoUrl]()\n"
         "* [Ok](https://example.org/ok)\n",
         {"entry_count": 2, "malformed": [1], "bad_urls": [2],
+         "targets": {t: [] for t in TARGETS}},
+    ),
+    "anchor_links": (
+        "* [Index](#chinese)\n"
+        "* [Ok](https://example.org/ok)\n",
+        {"entry_count": 2, "malformed": [], "bad_urls": [],
          "targets": {t: [] for t in TARGETS}},
     ),
     "unusual_url_chars": (
