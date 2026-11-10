@@ -13,7 +13,7 @@ DELAY = 1.0
 HEAD_UNSUPPORTED = (400, 403, 405, 501)
 FENCE = re.compile(r"^\s*(" + chr(96) * 3 + r"|~~~)")
 HEADING = re.compile(r"^#{1,6}\s+(.*?)\s*#*\s*$")
-ENTRY = re.compile(r"^\s*[*-]\s+\[(?P<name>.+?)\]\((?P<url>\S+?)\)\s*(?:[-\u2013\u2014]\s*(?P<meta>.*))?$")
+ENTRY = re.compile(r"^\s*[*-]\s+\[(?P<name>.+?)\]\((?P<url>\S+?)\)\s*(?:[-\u2013\u2014]\s*)?(?P<meta>.*)$")
 ALLOWED_ACTIONS = {"keep", "retry_later", "manual_review", "recommend_removal"}
 
 
